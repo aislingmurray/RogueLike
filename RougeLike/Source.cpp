@@ -69,10 +69,9 @@ void renderUI() {
 int main()
 {
 	Player player{ "Danny", 100 };
-	Enemy goblin{ "Goblin", 50, 25, 10 };
-
+	
 	player.attack();
-	goblin.attack();
+
 
 	map.loadMap(MAPSIZEX, MAPSIZEY);
 
