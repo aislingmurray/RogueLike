@@ -65,7 +65,7 @@ char Enemy::getChar()//Aaron Added
 	return _unitTile;
 }
 
-int Enemy::getHealth()
+int Enemy::getEnemyHealth()
 {
 	return _health;//aaron added
 }
