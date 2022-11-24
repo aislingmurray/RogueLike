@@ -2,18 +2,20 @@
 #include <iostream>
 #include "Enemy.h"
 
-Enemy::Enemy(std::string name, int maxHealth, int xp, int attackDamage)
+Enemy::Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level)
 {
-	m_name = name;
-	m_maxHealth = maxHealth;
-	m_currentHealth = m_maxHealth;
-	m_xp = xp;
-	m_attackDamage = attackDamage;
+	_name = name;
+	_unitTile = unitTile;
+	_health = health;
+	_attack = attack;
+	_defence = defence;
+	_xp = xp;
+	_level = level;
 }
 
 Enemy::~Enemy()
 {
-	std::cout << m_name << " Destructor" << std::endl;
+
 }
 
 void Enemy::getPosition(int& x, int& y)//AaronAdded
