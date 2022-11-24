@@ -15,30 +15,26 @@ private:
 	string _name;
 	char _unitTile;
 
+	//Enemy Status
 	int _health;
 	int _attack;
 	int _xp;
 	int _defence;
 	int _level;
 
+	//Enemy Location
 	int _x;
 	int _y;
 
 public:
-	Enemy(std::string name, char unitTile, int health, int attack, int defence, int xp, int level);
+	Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level);
 	~Enemy();
-
-	//Getters and Setters
 	void getPosition(int& x, int& y);
 	void setPosition(int x, int y);
 	int attackChance();
-	int getHealth();//Getting Enemy Health
-	int getXp();//Getting Enemy XP
-	int getAttackDamage(int attackChance);//Get damage done to enemy
+	int takeDamage(int attackChance); //return 0 if not dead else return xp
 	string getEnemyName();
 	int getEnemyHealth();
 	char getMove(int playerX, int playerY);
 	char getChar();
-
-	void attack();
 };

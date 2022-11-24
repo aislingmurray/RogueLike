@@ -67,23 +67,10 @@ char Enemy::getChar()//Aaron Added
 
 int Enemy::getHealth()
 {
-	return m_currentHealth;
+	return _health;//aaron added
 }
 
-int Enemy::getXp()
-{
-	return m_xp;
-}
 
-int Enemy::getAttackDamage()
-{
-	return m_attackDamage;
-}
-
-void Enemy::attack()
-{
-	std::cout << m_name << " attacks player" << std::endl;
-}
 
 char Enemy::getMove(int playerX, int playerY) // AaronAdded
 {
