@@ -1,40 +1,33 @@
 #pragma once
-
 #include <string>
-#include <random>
-#include <ctime>
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#include "GetAndSet.h"
+#define randomGen(a,b) (rand() %a + b)
 
-using std::string;
-using std::mt19937;
-using std::uniform_int_distribution;
-using std::time;
 
-class Enemy
+using namespace std;
+class Enemy : public GetAndSet
 {
-private:
-	string _name;
-	char _unitTile;
+public:
+	Enemy(string name, char tile, int health, int attack);  //initiate enemy
 
-	//Enemy Status
+	char getTile() { return _tile; }                    // get the enemy tile representation
+
+	void getPosition(int& x, int& y) {                   // get enemy position on map
+		x = _x;
+		y = _y;
+	}
+
+	char getMoveEnemy(int playerX, int playerY);              // Move the enemy using AI
+
+	string _name;
 	int _health;
 	int _attack;
-	int _xp;
-	int _defence;
-	int _level;
+	char _tile;
 
-	//Enemy Location
-	int _x;
-	int _y;
 
-public:
-	Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level);
-	~Enemy();
-	void getPosition(int& x, int& y);
-	void setPosition(int x, int y);
-	int attackChance();
-	int takeDamage(int attackChance); //return 0 if not dead else return xp
-	string getEnemyName();
-	int getEnemyHealth();
-	char getMove(int playerX, int playerY);
-	char getChar();
 };
+
+

@@ -1,128 +1,56 @@
-#include <string>
-#include <iostream>
 #include "Enemy.h"
 
-Enemy::Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level)
-{
+
+
+Enemy::Enemy(string name, char tile, int health, int attack) {   //Initiate Enemy 
 	_name = name;
-	_unitTile = unitTile;
 	_health = health;
 	_attack = attack;
-	_defence = defence;
-	_xp = xp;
-	_level = level;
+	_tile = tile;
 }
 
-Enemy::~Enemy()
-{
+char Enemy::getMoveEnemy(int playerX, int playerY) {      // Calaculates the movement of the Enemy
 
-}
-
-void Enemy::getPosition(int& x, int& y)//AaronAdded
-{
-	x = _x;
-	y = _y;
-}
-
-void Enemy::setPosition(int x, int y)//AaronAdded
-{
-	_x = x;
-	_y = y;
-}
-
-int Enemy::attackChance()//AaronAdded
-{
-	static mt19937 randomEngine(time(NULL));
-	uniform_int_distribution<int> attackPower(0, _attack);
-
-	return attackPower(randomEngine);
-}
-
-int Enemy::takeDamage(int attackChance)//AaronAdded
-{
-	attackChance -= _defence;
-
-	//check if attack does damage
-	if (attackChance > 0)
-	{
-		_health -= attackChance;
-
-		//Check if it died
-		if (_health <= 0)
-			return _xp;
-	}
-
-	return 0;
-}
-
-string Enemy::getEnemyName()//Aaron Added
-{
-	return _name;
-}
-
-char Enemy::getChar()//Aaron Added
-{
-	return _unitTile;
-}
-
-int Enemy::getEnemyHealth()
-{
-	return _health;//aaron added
-}
-
-
-
-char Enemy::getMove(int playerX, int playerY) // AaronAdded
-{
-	static mt19937 randomEngine(time(NULL));
-	uniform_int_distribution<int> moveRoll(0, 6);
-
-	int distance; //from Player
+	int distanceFromPlayer;
 	int dx = _x - playerX;
 	int dy = _y - playerY;
 	int adx = abs(dx);
 	int ady = abs(dy);
-	int randomMove;
-	distance = adx + ady;
-
-	if (distance <= 5)
-	{
-		if (adx > ady) //Moves along x-axis
-		{
-			if (dx > 0) //Right of player
+	distanceFromPlayer = adx + ady;           // calculate the distance from the player to decide the next move
+	if (distanceFromPlayer <= 50) {
+		if (adx > ady) {
+			if (dx > 0) {
 				return 'a';
-
-			else
+			}
+			else {
 				return 'd';
+			}
 		}
-
-		else
-		{
-			if (dy > 0) //Right of player
+		else {
+			if (dy > 0) {
 				return 'w';
-
-			else
+			}
+			else {
 				return 's';
+			}
 		}
 	}
 
-	randomMove = moveRoll(randomEngine);
-
-	switch (randomMove)
-	{
-	case 0:
-		return 'w';
-
+	int randomMove = randomGen(5, 1);           // randomly moves to one of direction when player is not class
+	switch (randomMove) {
 	case 1:
 		return 'a';
-
 	case 2:
-		return 's';
-
+		return 'w';
 	case 3:
+		return 's';
+	case 4:
 		return 'd';
-
 	default:
 		return '.';
+
 	}
 }
+
+
+
