@@ -20,6 +20,7 @@ private:
 	void movePlayer(Player& player, int moveX, int moveY);
 	void moveEnemy(Player& player, int enemyIndex, int moveX, int moveY);
 	void fightEnemy(Player& player, int targetX, int targetY);
+	vector <Enemy> _enemies;
 
 public:
 	Level();
