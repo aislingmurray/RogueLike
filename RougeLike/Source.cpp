@@ -60,6 +60,74 @@ void renderPlayer()
 	Sleep(120);
 }
 
+/*void Source::updateEnemyPosition(Player& player) //AARON ADDED DOESNT FUCK OFF WORK
+{
+	char aiMove;
+	int playerX;
+	int playerY;
+	int enemyX;
+	int enemyY;
+
+	player.getPosition(playerX, playerY);
+
+	for (int i = 0; i < _enemies.size(); ++i)
+	{
+		aiMove = _enemies[i].getMove(playerX, playerY);
+		_enemies[i].getPosition(enemyX, enemyY);
+
+		switch (aiMove)
+		{
+		case 'w':
+			moveEnemyLogic(player, i, enemyX, enemyY - 1);
+			break;
+
+			//Left
+		case 'a':
+			moveEnemyLogic(player, i, enemyX - 1, enemyY);
+			break;
+
+			//Down
+		case 's':
+			moveEnemyLogic(player, i, enemyX, enemyY + 1);
+			break;
+
+			//Right
+		case 'd':
+			moveEnemyLogic(player, i, enemyX + 1, enemyY);
+			break;
+		}
+	}
+
+}
+
+void Level::moveEnemyLogic(Player& player, int enemyIndex, int moveX, int moveY)
+{
+	int playerX;
+	int playerY;
+	int enemyX;
+	int enemyY;
+
+	_enemies[enemyIndex].getPosition(enemyX, enemyY);
+
+	char moveToUnit = getUnitTile(moveX, moveY);
+
+	switch (moveToUnit)
+	{
+	case '.':
+		_enemies[enemyIndex].setPosition(moveX, moveY);
+		setUnitTile(enemyX, enemyY, '.');
+		setUnitTile(moveX, moveY, _enemies[enemyIndex].getChar());
+		break;
+
+	case '@': battleEnemy(player, enemyX, enemyY);
+		break;
+
+	default:
+		break;
+	}
+}*/
+
+
 // print messages below map by moving the cursor 
 void renderUI() {
 	utility::goToScreenPosition(0, MAPSIZEY);
