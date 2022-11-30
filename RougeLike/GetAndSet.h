@@ -11,6 +11,6 @@ public:
 
 	//private:
 
-	int _x;
-	int _y;
+	int m_x;
+	int m_y;
 };

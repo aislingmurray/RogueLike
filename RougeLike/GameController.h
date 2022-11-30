@@ -17,7 +17,7 @@ class GameController
 private:
 	Player m_player;
 	Level m_level;
-	std::vector<string> m_mainMenu = { "***Main Menu***", "New Game", "Load Game", "Insturctions", "Help", "Exit" };
+	std::vector<std::string> m_mainMenu = { "***Main Menu***", "New Game", "Load Game", "Insturctions", "Help", "Exit" };
 
 public:
 	GameController(std::string levelFileName);

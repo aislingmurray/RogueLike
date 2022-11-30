@@ -2,18 +2,18 @@
 
 
 
-Enemy::Enemy(string name, char tile, int health, int attack) {   //Initiate Enemy 
-	_name = name;
-	_health = health;
-	_attack = attack;
-	_tile = tile;
+Enemy::Enemy(std::string name, char tile, int health, int attack) {   //Initiate Enemy 
+	m_name = name;
+	m_health = health;
+	m_attack = attack;
+	m_tile = tile;
 }
 
-char Enemy::getMoveEnemy(int playerX, int playerY) {      // Calaculates the movement of the Enemy
+char Enemy::getMove(int playerX, int playerY) {      // Calaculates the movement of the Enemy
 
 	int distanceFromPlayer;
-	int dx = _x - playerX;
-	int dy = _y - playerY;
+	int dx = m_x - playerX;
+	int dy = m_y - playerY;
 	int adx = abs(dx);
 	int ady = abs(dy);
 	distanceFromPlayer = adx + ady;           // calculate the distance from the player to decide the next move

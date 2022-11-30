@@ -1,7 +1,7 @@
 #include "GameController.h"
 
 
-GameController::GameController(string levelFileName)
+GameController::GameController(std::string levelFileName)
 {
 	m_player.init(100, 10, 10, 0, 1);
 	m_level.loadLevel(levelFileName, m_player);

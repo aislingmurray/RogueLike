@@ -8,10 +8,10 @@ Level::~Level()
 {
 }
 
-void Level::loadLevel(string fileName, Player& player)
+void Level::loadLevel(std::string fileName, Player& player)
 {
 	std::ifstream levelFile;
-	string levelLine;
+	std::string levelLine;
 
 	//Loading Level File
 	levelFile.open(fileName);
@@ -25,7 +25,7 @@ void Level::loadLevel(string fileName, Player& player)
 
 	while (getline(levelFile, levelLine))
 	{
-		_levelData.push_back(levelLine);
+		m_levelData.push_back(levelLine);
 	}
 
 	levelFile.close();
@@ -34,31 +34,31 @@ void Level::loadLevel(string fileName, Player& player)
 	//Processing Level File
 	char unitTile;
 
-	for (int i = 0; i < _levelData.size(); ++i)
+	for (int i = 0; i < m_levelData.size(); ++i)
 	{
-		for (int j = 0; j < _levelData[i].size(); ++j)
+		for (int j = 0; j < m_levelData[i].size(); ++j)
 		{
-			unitTile = _levelData[i][j];
+			unitTile = m_levelData[i][j];
 
 			switch (unitTile)
 			{
 			case '@': player.setPosition(j, i); //Player
 				break;
 
-			case 'M': _enemies.push_back(Enemy("Monster", unitTile, 50, 30, 50, 40, 3));
-				_enemies.back().setPosition(j, i);
+			case 'M': m_enemies.push_back(Enemy("Monster", unitTile, 50, 30, 50, 40, 3));
+				m_enemies.back().setPosition(j, i);
 				break;
 
-			case 'G': _enemies.push_back(Enemy("Gargoyle", unitTile, 40, 50, 20, 35, 2));
-				_enemies.back().setPosition(j, i);
+			case 'G': m_enemies.push_back(Enemy("Gargoyle", unitTile, 40, 50, 20, 35, 2));
+				m_enemies.back().setPosition(j, i);
 				break;
 
-			case 'D': _enemies.push_back(Enemy("Dragon", unitTile, 100, 100, 100, 100, 10));
-				_enemies.back().setPosition(j, i);
+			case 'D': m_enemies.push_back(Enemy("Dragon", unitTile, 100, 100, 100, 100, 10));
+				m_enemies.back().setPosition(j, i);
 				break;
 
-			case 'S': _enemies.push_back(Enemy("Skeleton", unitTile, 10, 5, 5, 5, 1));
-				_enemies.back().setPosition(j, i);
+			case 'S': m_enemies.push_back(Enemy("Skeleton", unitTile, 10, 5, 5, 5, 1));
+				m_enemies.back().setPosition(j, i);
 				break;
 			}
 		}
@@ -69,9 +69,9 @@ void Level::displayLevel()
 {
 	system("cls");
 
-	for (int i = 0; i < _levelData.size(); ++i)
+	for (int i = 0; i < m_levelData.size(); ++i)
 	{
-		printf("%s", _levelData[i].c_str());
+		printf("%s", m_levelData[i].c_str());
 		printf("\n");
 	}
 }
@@ -156,8 +156,8 @@ void Level::movePlayer(Player& player, int moveX, int moveY)
 		if ((input == 'Y') || (input == 'y'))
 		{
 			clearLevel();
-			_levelPath.push_back("Levels\\Level_" + std::to_string(++_levelCount) + ".level");
-			loadLevel(_levelPath.back(), player);
+			m_levelPath.push_back("Levels\\Level_" + std::to_string(++_levelCount) + ".level");
+			loadLevel(m_levelPath.back(), player);
 		}
 
 	case 'x':
@@ -170,12 +170,12 @@ void Level::movePlayer(Player& player, int moveX, int moveY)
 
 char Level::getUnitTile(int x, int y)
 {
-	return _levelData[y][x];
+	return m_levelData[y][x];
 }
 
 void Level::setUnitTile(int x, int y, char unitTile)
 {
-	_levelData[y][x] = unitTile;
+	m_levelData[y][x] = unitTile;
 }
 
 void Level::fightEnemy(Player& player, int targetX, int targetY)
@@ -187,16 +187,16 @@ void Level::fightEnemy(Player& player, int targetX, int targetY)
 	int attackPower;
 	int attackResult;
 
-	for (int i = 0; i < _enemies.size(); i++)
+	for (int i = 0; i < m_enemies.size(); i++)
 	{
-		_enemies[i].getPosition(enemyX, enemyY);
+		m_enemies[i].getPosition(enemyX, enemyY);
 
 		if ((targetX == enemyX) && (targetY == enemyY))
 		{
 			//Battle
 			attackPower = player.attackChance();
-			attackResult = _enemies[i].takeDamage(attackPower);
-			printf("\nPlayer attacked %s with %d damage!!, %s's health: %d", _enemies[i].getEnemyName().c_str(), attackPower, _enemies[i].getEnemyName().c_str(), _enemies[i].getEnemyHealth());
+			attackResult = m_enemies[i].takeDamage(attackPower);
+			printf("\nPlayer attacked %s with %d damage!!, %s's health: %d", m_enemies[i].getEnemyName().c_str(), attackPower, _enemies[i].getEnemyName().c_str(), _enemies[i].getEnemyHealth());
 			system("PAUSE>null");
 
 			if (attackResult > 0)
@@ -204,10 +204,10 @@ void Level::fightEnemy(Player& player, int targetX, int targetY)
 				player.addXP(attackResult);
 				setUnitTile(targetX, targetY, '.');
 				displayLevel();
-				printf("\n%s died!!!", _enemies[i].getEnemyName().c_str());
+				printf("\n%s died!!!", m_enemies[i].getEnemyName().c_str());
 				//remove enemy
-				_enemies[i] = _enemies.back();
-				_enemies.pop_back();
+				m_enemies[i] = _enemies.back();
+				m_enemies.pop_back();
 				--i;
 				system("PAUSE>null");
 
@@ -215,9 +215,9 @@ void Level::fightEnemy(Player& player, int targetX, int targetY)
 			}
 
 			//Enemy Turn
-			attackPower = _enemies[i].attackChance();
+			attackPower = m_enemies[i].attackChance();
 			attackResult = player.takeDamage(attackPower);
-			printf("\n%s attacked Player with %d damage!!, Player's health: %d", _enemies[i].getEnemyName().c_str(), attackPower, player.getPlayerHealth());
+			printf("\n%s attacked Player with %d damage!!, Player's health: %d", m_enemies[i].getEnemyName().c_str(), attackPower, player.getPlayerHealth());
 			system("PAUSE>null");
 
 			if (attackResult != 0)
@@ -246,10 +246,10 @@ void Level::updateEnemyPosition(Player& player)
 
 	player.getPosition(playerX, playerY);
 
-	for (int i = 0; i < _enemies.size(); ++i)
+	for (int i = 0; i < m_enemies.size(); ++i)
 	{
-		aiMove = _enemies[i].getMove(playerX, playerY);
-		_enemies[i].getPosition(enemyX, enemyY);
+		aiMove = m_enemies[i].getMove(playerX, playerY);
+		m_enemies[i].getPosition(enemyX, enemyY);
 
 		switch (aiMove)
 		{
@@ -283,16 +283,16 @@ void Level::moveEnemy(Player& player, int enemyIndex, int moveX, int moveY)
 	int enemyX;
 	int enemyY;
 
-	_enemies[enemyIndex].getPosition(enemyX, enemyY);
+	m_enemies[enemyIndex].getPosition(enemyX, enemyY);
 
 	char moveToUnit = getUnitTile(moveX, moveY);
 
 	switch (moveToUnit)
 	{
 	case '.': /*previousUnitUp = _levelData[playerY - 1][playerX];*/
-		_enemies[enemyIndex].setPosition(moveX, moveY);
+		m_enemies[enemyIndex].setPosition(moveX, moveY);
 		setUnitTile(enemyX, enemyY, '.');
-		setUnitTile(moveX, moveY, _enemies[enemyIndex].getChar());
+		setUnitTile(moveX, moveY, m_enemies[enemyIndex].getChar());
 		break;
 
 	case '@': fightEnemy(player, enemyX, enemyY);
@@ -305,8 +305,8 @@ void Level::moveEnemy(Player& player, int enemyIndex, int moveX, int moveY)
 
 void Level::clearLevel()
 {
-	_levelData.clear();
-	_enemies.clear();
+	m_levelData.clear();
+	m_enemies.clear();
 }
 
 void Level::saveProgress(int levelNum, int x, int y)

@@ -13,14 +13,14 @@ class Level
 {
 private:
 	int _levelCount = 1;
-	std::vector<string> _levelData;
-	std::vector<Enemy> _enemies;
-	std::vector<std::string> _levelPath;
+	std::vector<std::string> m_levelData;
+	std::vector<Enemy> m_enemies;
+	std::vector<std::string> m_levelPath;
 
 	void movePlayer(Player& player, int moveX, int moveY);
 	void moveEnemy(Player& player, int enemyIndex, int moveX, int moveY);
 	void fightEnemy(Player& player, int targetX, int targetY);
-	vector <Enemy> _enemies;
+	std::vector <Enemy> m_enemies;
 
 public:
 	Level();

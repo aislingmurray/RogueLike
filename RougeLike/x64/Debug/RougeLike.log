@@ -1,6 +1,46 @@
-﻿  Level.cpp
-C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(281,6): warning C4101: 'playerX': unreferenced local variable
-C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(282,6): warning C4101: 'playerY': unreferenced local variable
+﻿  GameController.cpp
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.h(23,22): error C2086: 'std::vector<Enemy,std::allocator<Enemy>> Level::m_enemies': redefinition
+  Level.cpp
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.h(23,22): error C2086: 'std::vector<Enemy,std::allocator<Enemy>> Level::m_enemies': redefinition
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(48,39): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(48,39): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(52,39): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(52,39): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(56,39): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(56,39): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(60,39): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(60,39): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(198,32): error C2039: 'takeDamage': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,82): error C2039: 'getEnemyName': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,119): error C2065: '_enemies': undeclared identifier
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,155): error C2065: '_enemies': undeclared identifier
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,11): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,11): warning C4473: 'printf' : not enough arguments passed for format string
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,11): message : placeholders and their parameters expect 4 variadic arguments, but 1 were provided
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(199,11): message : the missing variadic argument 2 is required by format string '%d'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(207,41): error C2039: 'getEnemyName': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(207,12): warning C4473: 'printf' : not enough arguments passed for format string
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(207,12): message : placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(207,12): message : the missing variadic argument 1 is required by format string '%s'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(209,20): error C2065: '_enemies': undeclared identifier
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(218,31): error C2039: 'attackChance': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,86): error C2039: 'getEnemyName': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,11): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,11): warning C4473: 'printf' : not enough arguments passed for format string
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,11): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(220,11): message : the missing variadic argument 3 is required by format string '%d'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(295,51): error C2039: 'getChar': is not a member of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Enemy.h(9,7): message : see declaration of 'Enemy'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(295,3): error C2660: 'Level::setUnitTile': function does not take 2 arguments
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(176,13): message : see declaration of 'Level::setUnitTile'
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(295,3): message : while trying to match the argument list '(int, int)'
   Source.cpp
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.h(23,22): error C2086: 'std::vector<Enemy,std::allocator<Enemy>> Level::m_enemies': redefinition
   Generating Code...
-  RougeLike.vcxproj -> C:\Users\danny\Git Repos\RogueLike\RougeLike\x64\Debug\RougeLike.exe

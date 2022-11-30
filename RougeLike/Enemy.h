@@ -6,26 +6,24 @@
 #include "GetAndSet.h"
 #define randomGen(a,b) (rand() %a + b)
 
-
-using namespace std;
 class Enemy : public GetAndSet
 {
 public:
-	Enemy(string name, char tile, int health, int attack);  //initiate enemy
+	Enemy(std::string name, char tile, int health, int attack);  //initiate enemy
 
-	char getTile() { return _tile; }                    // get the enemy tile representation
+	char getTile() { return m_tile; }                    // get the enemy tile representation
 
 	void getPosition(int& x, int& y) {                   // get enemy position on map
-		x = _x;
-		y = _y;
+		x = m_x;
+		y = m_y;
 	}
 
-	char getMoveEnemy(int playerX, int playerY);              // Move the enemy using AI
+	char getMove(int playerX, int playerY);              // Move the enemy using AI
 
-	string _name;
-	int _health;
-	int _attack;
-	char _tile;
+	std::string m_name;
+	int m_health;
+	int m_attack;
+	char m_tile;
 
 
 };
