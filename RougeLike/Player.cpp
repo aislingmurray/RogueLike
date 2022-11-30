@@ -2,14 +2,11 @@
 #include <string>
 #include <iostream>
 #include "Player.h"
-#include "Utility.h"
 
 
-Player::Player(std::string name, int maxHealth)
+Player::Player()
 {
-	m_name = name;
-	m_maxHealth = maxHealth;
-	m_currentHealth = m_maxHealth;
+
 }
 
 Player::~Player()
@@ -17,37 +14,104 @@ Player::~Player()
 	std::cout << "Player Destructor" << std::endl;
 }
 
-int Player::getHealth()
+void Player::init(int health, int attack, int defence, int xp, int level)
 {
-	return m_currentHealth;
-}
-
-int Player::getXp()
-{
-	return m_xp;
-}
-
-void Player::setXp(int xp)
-{
+	m_health = health;
+	m_attack = attack;
+	m_defence = defence;
 	m_xp = xp;
+	m_level = level;
 }
 
-int Player::getAttackDamage()
+void Player::getPosition(int& x, int& y)
 {
-	return m_attackDamage;
+	x = m_x;
+	y = m_y;
 }
 
-void Player::setAttackDamage(int attackDamage)
+void Player::setPosition(int x, int y)
 {
-	m_attackDamage = attackDamage;
+	m_x = x;
+	m_y = y;
 }
 
-void Player::attack()
+int Player::attackChance()
 {
-	std::cout << "Player attack" << std::endl;
+	static std::mt19937 randomEngine(time(NULL));
+	std::uniform_int_distribution<int> attackPower(0, m_attack);
+
+	return attackPower(randomEngine);
 }
 
-void Player::pickUpItem()
+int Player::takeDamage(int attackChance)
 {
-	std::cout << "Player picked up an item" << std::endl;
+	attackChance -= m_defence;
+
+	//if attack does damage after defence
+	if (attackChance > 0)
+	{
+		m_health -= attackChance;
+
+		if (m_health <= 0)
+			return 1;
+	}
+
+	return 0;
+}
+
+void Player::addXP(int xp)
+{
+	m_xp += xp;
+
+	printf("\nXP gained: %d", xp);
+	printf("\nTotal XP: %d", m_xp);
+	system("PAUSE>null");
+
+	while (m_xp >= m_xpThreshold) //Level_UP
+	{
+		m_xpThreshold += m_xpThreshold;
+		m_attack += 0.7 * m_attack;
+		m_defence += 0.7 * m_defence;
+		m_health += 0.7 * m_health;
+		++m_level;
+
+		printf("\nLevel UP!!");
+		printf("\nLevel Reached: %d", m_level);
+		printf("\nPress ENTER to continue...");
+		system("PAUSE>null");
+	}
+}
+
+int Player::getPlayerHealth()
+{
+	return m_health;
+}
+
+void Player::unknownEncounter()
+{
+	static std::mt19937 randomEngine(time(NULL));
+	std::uniform_int_distribution<int> bonusChance(0, 3);
+
+	switch (bonusChance(randomEngine))
+	{
+	case 0: printf("\nBonus XP: +20 XP");
+		addXP(20);
+		system("PAUSE>null");
+		break;
+
+	case 1: printf("\nAttack: +20");
+		m_attack += 20;
+		system("PAUSE>null");
+		break;
+
+	case 2: printf("\nDefence: +20");
+		m_defence += 20;
+		system("PAUSE>null");
+		break;
+
+	case 3: printf("\nHealth: +20");
+		m_health += 20;
+		system("PAUSE>null");
+		break;
+	}
 }

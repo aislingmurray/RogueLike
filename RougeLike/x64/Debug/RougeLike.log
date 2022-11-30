@@ -1,2 +1,6 @@
-﻿  Source.cpp
+﻿  Level.cpp
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(281,6): warning C4101: 'playerX': unreferenced local variable
+C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(282,6): warning C4101: 'playerY': unreferenced local variable
+  Source.cpp
+  Generating Code...
   RougeLike.vcxproj -> C:\Users\danny\Git Repos\RogueLike\RougeLike\x64\Debug\RougeLike.exe

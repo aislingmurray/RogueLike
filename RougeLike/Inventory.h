@@ -4,7 +4,7 @@
 
 #include "Player.h"
 
-class Inventory : public Player
+class Inventory
 {
 private:
 	std::vector<std::string> inventory;
