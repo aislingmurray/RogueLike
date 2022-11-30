@@ -128,20 +128,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
+<<<<<<< HEAD
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GetAndSet.h" />
+=======
+>>>>>>> parent of 98cb1c1 (Working Version)
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Level.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GetAndSet.cpp" />
+=======
+>>>>>>> parent of 98cb1c1 (Working Version)
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

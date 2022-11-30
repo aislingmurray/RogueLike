@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  GameController.cpp
 C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.h(23,22): error C2086: 'std::vector<Enemy,std::allocator<Enemy>> Level::m_enemies': redefinition
   Level.cpp
@@ -44,3 +45,7 @@ C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.cpp(295,3): message : while t
   Source.cpp
 C:\Users\danny\Git Repos\RogueLike\RougeLike\Level.h(23,22): error C2086: 'std::vector<Enemy,std::allocator<Enemy>> Level::m_enemies': redefinition
   Generating Code...
+=======
+﻿  Source.cpp
+  RougeLike.vcxproj -> C:\Users\danny\Git Repos\RogueLike\RougeLike\x64\Debug\RougeLike.exe
+>>>>>>> parent of 98cb1c1 (Working Version)
