@@ -1,40 +1,46 @@
 #pragma once
 
-#include <vector>
+#include <windows.h>
+#include <iostream>
 #include <string>
 #include <fstream>
-#include <cstdio>
-#include <conio.h>
-#include "Player.h"
+#include <vector>
+
+#include "Utility.h"
 #include "Enemy.h"
 
-using std::vector;
-using std::string;
-using std::ifstream;
-using std::ofstream;
-using std::getline;
-using std::to_string;
+//Used as backup if file cant load
+#define WALLCHAR '#'
+#define FLOORCHAR ' '
+
+//Both in px
+#define WINDOWSIZE_X 1500
+#define WINDOWSIZE_Y 1000
 
 class Level
 {
 private:
-	int _levelCounter = 1;
-	vector<string> _levelData;
-	vector<Enemy> _enemies;
-	vector<string> _levelPath;
-	void movePlayerLogic(Player& player, int moveX, int moveY);
-	void moveEnemyLogic(Player& player, int enemyIndex, int moveX, int moveY);
-	void battleEnemy(Player& player, int targetX, int targetY);
+	//Level size
+	int levelHeight;
+	int levelWidth;
+
+	//pointer to level
+	char* level;
+
+	std::vector<std::string> m_levelData;
+	std::vector<std::string> m_levelPath;
 
 public:
 	Level();
 	~Level();
-	void loadLevel(string fileName, Player& player);
-	void displayLevel();
-	void movePlayer(char move, Player& player);
-	void updateEnemyPosition(Player& player);
-	char getUnitTile(int x, int y);
-	void setUnitTile(int x, int y, char unitTile);
-	void saveProgress(int levelNum, int x, int y);
-	void clearLevel();
+
+	void loadLevel(int width, int height);
+
+	//Get and set the character position
+	char getXY(int x, int y);
+	bool setXY(int x, int y, char value);
+
+	//Print out the map
+	void printLevel(/*std::string line*/);
+
 };

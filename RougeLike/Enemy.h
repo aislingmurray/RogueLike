@@ -1,40 +1,34 @@
 #pragma once
 
-#include <string>
 #include <random>
 #include <ctime>
-
-using std::string;
-using std::mt19937;
-using std::uniform_int_distribution;
-using std::time;
 
 class Enemy
 {
 private:
-	string _name;
-	char _unitTile;
+	std::string e_name;
 
-	//Enemy Status
-	int _health;
-	int _attack;
-	int _xp;
-	int _defence;
-	int _level;
+	int e_health;
+	int e_attack;
+	int e_xp;
+	int e_defence;
+	int e_level;
 
-	//Enemy Location
-	int _x;
-	int _y;
+	int e_xPos;
+	int e_yPos;
 
 public:
-	Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level);
+	Enemy(std::string name, int health, int attack, int xp, int defence, int level);
 	~Enemy();
-	void getPosition(int& x, int& y);
-	void setPosition(int x, int y);
+
+	void getPosition(int& xPos, int& yPos);
+	void setPosition(int xPos, int yPos);
+	
 	int attackChance();
-	int takeDamage(int attackChance); //return 0 if not dead else return xp
-	string getEnemyName();
-	int getEnemyHealth();
+	int takeDamage(int attackChance);
+
+	std::string getName();
+	int getHealth();
 	char getMove(int playerX, int playerY);
 	char getChar();
 };

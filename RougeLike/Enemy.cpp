@@ -1,80 +1,76 @@
 #include "Enemy.h"
 
-Enemy::Enemy(string name, char unitTile, int health, int attack, int defence, int xp, int level)
+Enemy::Enemy(std::string name, int health, int attack, int defence, int xp, int level)
 {
-	_name = name;
-	_unitTile = unitTile;
-	_health = health;
-	_attack = attack;
-	_defence = defence;
-	_xp = xp;
-	_level = level;
+	e_name = name;
+	e_health = health;
+	e_attack = attack;
+	e_defence = defence;
+	e_xp = xp;
+	e_level = level;
 }
 
-Enemy::~Enemy()
-{
-}
+Enemy::~Enemy() {}
 
+//Getter and Setter for enemy position
 void Enemy::getPosition(int& x, int& y)
 {
-	x = _x;
-	y = _y;
+	x = e_xPos;
+	y = e_yPos;
 }
 
 void Enemy::setPosition(int x, int y)
 {
-	_x = x;
-	_y = y;
+	e_xPos = x;
+	e_yPos = y;
 }
 
+// Uses a random generator to determine if the attack does damage or not
 int Enemy::attackChance()
 {
-	static mt19937 randomEngine(time(NULL));
-	uniform_int_distribution<int> attackPower(0, _attack);
+	static std::mt19937 randomEngine(time(NULL));
+	std::uniform_int_distribution<int> attackPower(0, e_attack);
 
 	return attackPower(randomEngine);
 }
 
+//Takes damage from player if attackChance holds a value
 int Enemy::takeDamage(int attackChance)
 {
-	attackChance -= _defence;
+	attackChance -= e_defence;
 
 	//check if attack does damage
 	if (attackChance > 0)
 	{
-		_health -= attackChance;
+		e_health -= attackChance;
 
 		//Check if it died
-		if (_health <= 0)
-			return _xp;
+		if (e_health <= 0)
+			return e_xp;
 	}
 
 	return 0;
 }
 
-string Enemy::getEnemyName()
+std::string Enemy::getName()
 {
-	return _name;
+	return e_name;
 }
 
-int Enemy::getEnemyHealth()
+int Enemy::getHealth()
 {
-	return _health;
+	return e_health;
 }
 
-char Enemy::getChar()
-{
-	return _unitTile;
-}
-
+//Uses a random generator to move the enemy randomly in relation to the player
 char Enemy::getMove(int playerX, int playerY)
 {
-	static mt19937 randomEngine(time(NULL));
-	uniform_int_distribution<int> moveRoll(0, 6);
+	static std::mt19937 randomEngine(time(NULL));
+	std::uniform_int_distribution<int> moveRoll(0, 6);
 
 	int distance; //from Player
-	int dx = _x - playerX;
-	int dy = _y - playerY;
+	int dx = e_xPos - playerX;
+	int dy = e_yPos - playerY;
 	int adx = abs(dx);
 	int ady = abs(dy);
 	int randomMove;
