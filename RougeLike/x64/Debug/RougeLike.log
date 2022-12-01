@@ -1,2 +1,5 @@
-﻿  Source.cpp
+﻿  GameController.cpp
+  Level.cpp
+  Source.cpp
+  Generating Code...
   RougeLike.vcxproj -> C:\Users\danny\Git Repos\RogueLike\RougeLike\x64\Debug\RougeLike.exe

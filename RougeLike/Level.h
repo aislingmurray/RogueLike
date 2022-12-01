@@ -6,41 +6,37 @@
 #include <fstream>
 #include <vector>
 
-#include "Utility.h"
-#include "Enemy.h"
-
-//Used as backup if file cant load
-//#define WALLCHAR '#'
-//#define FLOORCHAR ' '
-
-//Both in px
-#define WINDOWSIZE_X 1500
-#define WINDOWSIZE_Y 800
+#include "Player.h"
+#include "FileHandler.h"
 
 class Level
 {
 private:
-	//Level size
-	int levelHeight;
-	int levelWidth;
+	const int x = 50;
+	const int y = 0;
+	double z = 0;
 
-	//pointer to level
-	char* level;
+	FileHandler m_fileHandler;
+	std::string levelFile;
+	std::vector <std::string>  m_levelData;
 
-	std::vector<std::string> m_levelData;
-	std::vector<std::string> m_levelPath;
+	Player _player;
+
+	//Processes the player movements on the level
+	void playerMoveProcess(Player& player, int targetX, int targetY);
 
 public:
 	Level();
 	~Level();
 
-	void loadLevel(int width, int height);
-
-	//Get and set the character position
-	char getXY(int x, int y);
-	bool setXY(int x, int y, char value);
-
-	//Print out the map
-	void printLevel(std::string line);
-
+	//Loads the level
+	void load(Player& player);
+	//Player movement
+	void movePlayer(char input, Player& player);
+	//Prints the level
+	void print(Player& player);
+	
+	//Getter and Setter for tile
+	char getTile(int x, int y);
+	void setTile(int x, int y, char tile);
 };
