@@ -2,14 +2,16 @@
 
 #include <iostream>
 
+#include "Player.h"
+
 class Gold
 {
 private:
-	int g_value;
+	int m_value;
 
 public:
-	Gold(int value);
+	Gold();
 	~Gold();
 
-	void increaseScore(int value);
+	void increaseScore(Player& player, int value);
 };

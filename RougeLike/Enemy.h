@@ -1,34 +1,27 @@
 #pragma once
 
-#include <random>
-#include <ctime>
+#include <string>
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
 
-class Enemy
+#include "Position.h"
+
+#define randomGen(a,b) (rand() %a + b)
+
+class Enemy : public Position
 {
-private:
-	std::string e_name;
-
-	int e_health;
-	int e_attack;
-	int e_xp;
-	int e_defence;
-	int e_level;
-
-	int e_xPos;
-	int e_yPos;
-
 public:
-	Enemy(std::string name, int health, int attack, int xp, int defence, int level);
-	~Enemy();
+	std::string m_name;
+	int m_health;
+	int m_attack;
+	char m_tile;
 
-	void getPosition(int& xPos, int& yPos);
-	void setPosition(int xPos, int yPos);
-	
-	int attackChance();
-	int takeDamage(int attackChance);
+	Enemy(std::string name, char tile, int health, int attack);
 
-	std::string getName();
-	int getHealth();
-	char getMove(int playerX, int playerY);
-	char getChar();
+	char getTile();
+
+	void getPosition(int& x, int& y);
+
+	char getMoveEnemy(int playerX, int playerY);
 };

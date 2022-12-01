@@ -1,49 +1,45 @@
 #include "Level.h"
+#include "Utility.h"
 
 Level::Level(){}
 
-void Level::load(Player &player)
-{
+void Level::load(Player& player) 
+{     
 	levelFile = "Level1.txt";
 	std::ifstream file;
 	file.open(levelFile);
-
-	if (file.fail()) {
+	if (file.fail()) 
+	{
 		std::cout << "Error";
 		system("PAUSE");
-		exit(404);
+		exit(0);
 	}
 
 	std::string line;
 
-	while (getline(file, line)) {
+	utility::gotoScreenPosition(0, 0);
+
+	while (getline(file, line)) 
+	{
 		m_levelData.push_back(line);
 	}
 	file.close();
 
 	char tile;
 
-	for (unsigned int i = 0; i < m_levelData.size(); i++)
+	for (unsigned int i = 0; i < m_levelData.size(); i++) 
 	{
-		for (unsigned int j = 0; j < m_levelData[i].size(); j++)
+		for (unsigned int j = 0; j < m_levelData[i].size(); j++) 
 		{
 			tile = m_levelData[i][j];
 
-			switch (tile)
-			{
+			switch (tile) {
 			case'@'://Player
 				player.setPosition(j, i);
 				player.init(15, 4, 0);
 				break;
-			case'-'://Walls
-			case '|':
+			case'#'://Walls
 				m_levelData[i][j] = (char)(219);
-				break;
-			case'+'://Doors
-				m_levelData[i][j] = '+';
-				break;
-			case'#'://Path
-				m_levelData[i][j] = '#';
 				break;
 			default:
 				break;
@@ -51,6 +47,7 @@ void Level::load(Player &player)
 		}
 	}
 }
+
 
 void Level::print(Player &player) 
 {
@@ -134,21 +131,44 @@ void Level::playerMoveProcess(Player& player, int targetX, int targetY)
 		system("PAUSE");
 		break;
 		//Gold and enemy collision goes in here
+	case'*':
+		m_gold.increaseScore(player, 5);
+		setTile(targetX, targetY, ' ');
+		break;
+	case'!':
+		win(player);
+		break;
 	default:
 		break;
 	}
 }
 
+//Program crashes here (vector subscript is out of range)
 char Level::getTile(int x, int y) 
 {
 	char a = m_levelData[y][x];
 	return m_levelData[y][x];
-
 }
 
 void Level::setTile(int x, int y, char tile) 
 {
 	m_levelData[y][x] = tile;
+}
+
+void Level::win(Player& player)
+{
+	if (player.m_gold >= 20)
+	{
+		std::cout << "YOU WIN!" << std::endl;
+		system("PAUSE");
+		exit(0);
+	}
+	else
+	{
+		std::cout << "You do not have enough Gold!" << std::endl;
+		system("PAUSE");
+		return;
+	}
 }
 
 

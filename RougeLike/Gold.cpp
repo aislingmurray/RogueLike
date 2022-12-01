@@ -1,13 +1,10 @@
 #include "Gold.h"
 
-Gold::Gold(int value) 
-{
-	g_value = value;
-}
+Gold::Gold() {}
 
 Gold::~Gold() {}
 
-void Gold::increaseScore(int value) 
+void Gold::increaseScore(Player& player, int value)
 {
-	//Global variable that gets increased by value
+	player.m_gold += value;
 }

@@ -8,19 +8,17 @@
 
 #include "Player.h"
 #include "FileHandler.h"
+#include "Gold.h"
 
 class Level
 {
 private:
-	const int x = 50;
-	const int y = 0;
-	double z = 0;
-
 	FileHandler m_fileHandler;
 	std::string levelFile;
 	std::vector <std::string>  m_levelData;
 
-	Player _player;
+	Player m_player;
+	Gold m_gold;
 
 	//Processes the player movements on the level
 	void playerMoveProcess(Player& player, int targetX, int targetY);
@@ -39,4 +37,6 @@ public:
 	//Getter and Setter for tile
 	char getTile(int x, int y);
 	void setTile(int x, int y, char tile);
+
+	void win(Player& player);
 };
