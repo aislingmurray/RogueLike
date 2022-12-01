@@ -24,9 +24,9 @@ void Level::loadLevel(int width, int height)
 	// allocate memory for the 2D array
 	level = new char[levelWidth * levelHeight];
 
-	/*std::ifstream levelFile;
+	std::ifstream levelFile;
 
-	levelFile.open("C:\\Users\\danny\\Git Repos\\RogueLike\\RougeLike\\Levels\\Level_1.level");
+	levelFile.open("Level1.txt");
 
 	if (!levelFile.is_open())
 	{
@@ -34,37 +34,16 @@ void Level::loadLevel(int width, int height)
 	}
 
 	std::string line;
+	utility::gotoScreenPosition(0, 0);
 	while (getline(levelFile, line))
 	{
 		printLevel(line);
-	}*/
-
-	for (int y = 0; y < levelHeight; y++)
-	{
-		for (int x = 0; x < levelWidth; x++)
-		{
-			if (x == 0 || x == levelWidth - 1 || y == 0 || y == levelHeight - 1)
-				level[y * levelWidth + x] = WALLCHAR;
-			else
-				level[y * levelWidth + x] = FLOORCHAR;
-		}
-	}
-
-	printLevel();
-	
+	}	
 }
 
-void Level::printLevel(/*std::string line*/) {
-
-	utility::gotoScreenPosition(0, 0);
-	for (int y = 0; y < levelHeight; y++)
-	{
-		for (int x = 0; x < levelWidth; x++)
-		{
-			std::cout << level[y * levelWidth + x];
-		}
-		std::cout << std::endl;
-	}
+void Level::printLevel(std::string line) 
+{
+	std::cout << line << std::endl;
 }
 
 // Get the character at position xy on the map 

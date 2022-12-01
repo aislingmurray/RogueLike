@@ -10,12 +10,12 @@
 #include "Enemy.h"
 
 //Used as backup if file cant load
-#define WALLCHAR '#'
-#define FLOORCHAR ' '
+//#define WALLCHAR '#'
+//#define FLOORCHAR ' '
 
 //Both in px
 #define WINDOWSIZE_X 1500
-#define WINDOWSIZE_Y 1000
+#define WINDOWSIZE_Y 800
 
 class Level
 {
@@ -41,6 +41,6 @@ public:
 	bool setXY(int x, int y, char value);
 
 	//Print out the map
-	void printLevel(/*std::string line*/);
+	void printLevel(std::string line);
 
 };

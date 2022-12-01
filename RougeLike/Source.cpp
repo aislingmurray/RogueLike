@@ -11,12 +11,13 @@
 #define MAPSIZEY 35
 
 
-unsigned int playerPositionX = 5;
-unsigned int playerPositionY = 5;
+unsigned int playerPositionX = 1;
+unsigned int playerPositionY = 1;
 unsigned int newPlayerPositionX = playerPositionX;
 unsigned int newPlayerPositionY = playerPositionY;
 char playerChar = 2;
 
+/*
 unsigned int enemyPositionX = 25;
 unsigned int enemyPositionY = 25;
 unsigned int newEnemyPositionX = enemyPositionX;
@@ -34,6 +35,7 @@ unsigned int potionPositionY = 15;
 unsigned int newPotionPositionX = potionPositionX;
 unsigned int newPotionPositionY = potionPositionY;
 char potionChar = 94;
+*/
 
 Level level;
 
@@ -80,6 +82,7 @@ void renderPlayer()
 	Sleep(120);
 }
 
+/*
 void renderEnemy()
 {
 	// Draw new enemy position
@@ -99,15 +102,15 @@ void renderEnemy()
 
 void renderGold()
 {
-	// Draw new enemy position
+	// Draw new gold position
 	utility::gotoScreenPosition(goldPositionX, goldPositionY);
 	std::cout << " ";
 
-	// Draw new enemy position
+	// Draw new gold position
 	utility::gotoScreenPosition(newGoldPositionX, newGoldPositionY);
 	std::cout << goldChar;
 
-	// update player position
+	// update gold position
 	goldPositionX = newGoldPositionX;
 	goldPositionY = newGoldPositionY;
 
@@ -116,21 +119,22 @@ void renderGold()
 
 void renderPotion()
 {
-	// Draw new enemy position
+	// Draw new potion position
 	utility::gotoScreenPosition(potionPositionX, potionPositionY);
 	std::cout << " ";
 
-	// Draw new enemy position
+	// Draw new potion position
 	utility::gotoScreenPosition(newPotionPositionX, newPotionPositionY);
 	std::cout << potionChar;
 
-	// update player position
+	// update player potion
 	potionPositionX = newPotionPositionX;
 	potionPositionY = newPotionPositionY;
 
 
 	Sleep(120);
 }
+*/
 
 // print messages below map by moving the cursor 
 void renderUI() {
@@ -152,9 +156,11 @@ int main()
 
 		// Render the scene
 		renderPlayer();
+		/*
 		renderEnemy();
 		renderGold();
 		renderPotion();
+		*/
 
 		enemy.getMove(newPlayerPositionX, newPlayerPositionY);
 
